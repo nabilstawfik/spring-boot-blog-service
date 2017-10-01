@@ -65,13 +65,17 @@ public class BlogResource {
     public ResponseEntity<List<BlogDto>> findAll(
             @RequestParam(name = "page", defaultValue = "0") Integer page,
             @RequestParam(name = "pageSize", defaultValue = "20") Integer pageSize) {
-        try {
-            List<Blog> blogsList = blogService.findAll(page, pageSize);
-            List<BlogDto> blogsDtoList = blogsList.stream().map(blog -> blogTransformer.toDto(blog)).collect(Collectors.toList());;
-            return new ResponseEntity<>(blogsDtoList, HttpStatus.OK);
-        } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
+
+        List<Blog> blogsList = blogService.findAll(page, pageSize);
+        List<BlogDto> blogsDtoList = blogsList.stream().map(blog -> {
+            BlogDto blogDto = blogTransformer.toDto(blog);
+            try {
+                blogDto.add(linkTo(methodOn(BlogResource.class).update(blogDto)).withSelfRel());
+            } catch (AuthorNotFoundException ex) {
+                LOGGER.log(Level.SEVERE, null, ex);
+            }
+            return blogDto;
+        }).collect(Collectors.toList());
+        return new ResponseEntity<>(blogsDtoList, HttpStatus.OK);
     }
 }
