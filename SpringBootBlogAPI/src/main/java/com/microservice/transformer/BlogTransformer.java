@@ -5,7 +5,6 @@
  */
 package com.microservice.transformer;
 
-import com.microservice.dto.AuthorDto;
 import com.microservice.dto.BlogDto;
 import com.microservice.exception.AuthorNotFoundException;
 import com.microservice.model.Author;
@@ -26,6 +25,8 @@ public class BlogTransformer {
     private AuthorRepository authorRepository;
     @Autowired
     private BlogRepository blogRepository;
+    @Autowired
+    private AuthorTransformer authorTransformer;
 
     public BlogDto toDto(Blog blog) {
         BlogDto blogDto = new BlogDto();
@@ -33,20 +34,18 @@ public class BlogTransformer {
         blogDto.setBody(blog.getBody());
         blogDto.setTitle(blog.getTitle());
         blogDto.setCreationTime(blog.getCreationTime());
-        blogDto.setAuthorDto(new AuthorDto(blog.getAuthor().getId(), blog.getAuthor().getNickName()));
+        blogDto.setAuthorDto(authorTransformer.toDto(blog.getAuthor()));
         return blogDto;
     }
 
     public Blog toModel(BlogDto blogDto) throws AuthorNotFoundException {
-        Author author = null;
+        Author author;
         Blog blog;
-        if (blogDto.getAuthorDto() != null && blogDto.getAuthorDto().getAuthorId() != 0) {
-            author = authorRepository.findOne(blogDto.getAuthorDto().getAuthorId());
-        }
-        if (author == null) {
-            throw new AuthorNotFoundException();
-        }
         if (blogDto.getBlogId() == 0) {
+            author = authorRepository.findOne(blogDto.getAuthorDto().getAuthorId());
+            if (author == null) {
+                throw new AuthorNotFoundException();
+            }
             blog = new Blog(blogDto.getTitle(), blogDto.getBody(), blogDto.getCreationTime(), author);
         } else {
             blog = blogRepository.findOne(blogDto.getBlogId());
