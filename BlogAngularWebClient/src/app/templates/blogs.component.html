@@ -27,6 +27,6 @@
 <h3>Blogs Listing</h3>
 <div class="grid grid-pad">
     <div *ngFor="let blog of blogs">
-        <h4>{{blog.title}}&nbsp;(<a [routerLink]="['/blogs', blog.blogId]">Edit</a>)</h4>
+        <h4>{{blog.title}}&nbsp;(<a [routerLink]="['/blogs', blog.id]">Edit</a>)</h4>
     </div>
 </div>

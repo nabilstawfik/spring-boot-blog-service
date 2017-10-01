@@ -21,7 +21,7 @@ export class BlogService {
 
     getBlog(id: number): Promise<Blog> {
       return this.getBlogs()
-                 .then(blogs => blogs.find(blog => blog.blogId === id));
+                 .then(blogs => blogs.find(blog => blog.id === id));
     }
 
     create(blog: Blog): Promise<Blog> {

@@ -20,7 +20,7 @@ export class AuthorService {
 
     getAuthor(id: number): Promise<Author> {
       return this.getAuthors()
-                 .then(authors => authors.find(author => author.authorId === id));
+                 .then(authors => authors.find(author => author.id === id));
     }
 
     create(name: string): Promise<Author> {
@@ -33,7 +33,7 @@ export class AuthorService {
     }
 
     update(author: Author): Promise<Author> {
-      const url = `${this.baseUrl}/save/${author.authorId}`;
+      const url = `${this.baseUrl}/save/${author.id}`;
       return this.http
         .put(url, JSON.stringify(author), {headers: this.headers})
         .toPromise()

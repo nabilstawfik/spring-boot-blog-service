@@ -5,6 +5,7 @@
  */
 package com.microservice.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import lombok.Setter;
 @Setter
 public class AuthorDto extends AbstractDto {
 
+    @JsonProperty(value = "id")
     private long authorId;
     @NotNull
     private String nickName;

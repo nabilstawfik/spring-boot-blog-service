@@ -19,6 +19,7 @@ import lombok.Setter;
 @Setter
 public class BlogDto extends AbstractDto {
 
+    @JsonProperty(value = "id")
     private long blogId;
     @NotNull
     private String title;

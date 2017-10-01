@@ -76,20 +76,18 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_author_detail_component__ = __webpack_require__("../../../../../src/app/components/author-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_authors_component__ = __webpack_require__("../../../../../src/app/components/authors.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_blogs_component__ = __webpack_require__("../../../../../src/app/components/blogs.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_update_blog_component__ = __webpack_require__("../../../../../src/app/components/update.blog.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__modules_app_routing_module__ = __webpack_require__("../../../../../src/app/modules/app-routing.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_author_service__ = __webpack_require__("../../../../../src/app/services/author.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_blog_service__ = __webpack_require__("../../../../../src/app/services/blog.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_authors_component__ = __webpack_require__("../../../../../src/app/components/authors.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_blogs_component__ = __webpack_require__("../../../../../src/app/components/blogs.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_update_blog_component__ = __webpack_require__("../../../../../src/app/components/update.blog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_app_routing_module__ = __webpack_require__("../../../../../src/app/modules/app-routing.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_author_service__ = __webpack_require__("../../../../../src/app/services/author.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_blog_service__ = __webpack_require__("../../../../../src/app/services/blog.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -109,35 +107,20 @@ var AppModule = (function () {
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_5__components_author_detail_component__["a" /* AuthorDetailComponent */], __WEBPACK_IMPORTED_MODULE_6__components_authors_component__["a" /* AuthorsComponent */], __WEBPACK_IMPORTED_MODULE_7__components_blogs_component__["a" /* BlogsComponent */], __WEBPACK_IMPORTED_MODULE_8__components_update_blog_component__["a" /* UpdateBlogComponent */]
+            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_5__components_authors_component__["a" /* AuthorsComponent */], __WEBPACK_IMPORTED_MODULE_6__components_blogs_component__["a" /* BlogsComponent */], __WEBPACK_IMPORTED_MODULE_7__components_update_blog_component__["a" /* UpdateBlogComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_9__modules_app_routing_module__["a" /* AppRoutingModule */]
+            __WEBPACK_IMPORTED_MODULE_8__modules_app_routing_module__["a" /* AppRoutingModule */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_10__services_author_service__["a" /* AuthorService */], __WEBPACK_IMPORTED_MODULE_11__services_blog_service__["a" /* BlogService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_9__services_author_service__["a" /* AuthorService */], __WEBPACK_IMPORTED_MODULE_10__services_blog_service__["a" /* BlogService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
 //# sourceMappingURL=app.module.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/classes/author.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Author; });
-var Author = (function () {
-    function Author() {
-    }
-    return Author;
-}());
-
-//# sourceMappingURL=author.js.map
 
 /***/ }),
 
@@ -153,72 +136,6 @@ var Blog = (function () {
 }());
 
 //# sourceMappingURL=blog.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/author-detail.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthorDetailComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__ = __webpack_require__("../../../../rxjs/add/operator/switchMap.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_switchMap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__classes_author__ = __webpack_require__("../../../../../src/app/classes/author.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_author_service__ = __webpack_require__("../../../../../src/app/services/author.service.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var AuthorDetailComponent = (function () {
-    function AuthorDetailComponent(authorService, route, location) {
-        this.authorService = authorService;
-        this.route = route;
-        this.location = location;
-    }
-    AuthorDetailComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.route.paramMap
-            .switchMap(function (params) { return _this.authorService.getAuthor(+params.get('id')); })
-            .subscribe(function (author) { return _this.author = author; });
-    };
-    AuthorDetailComponent.prototype.save = function () {
-        var _this = this;
-        this.authorService.update(this.author)
-            .then(function () { return _this.goBack(); });
-    };
-    AuthorDetailComponent.prototype.goBack = function () {
-        this.location.back();
-    };
-    return AuthorDetailComponent;
-}());
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__classes_author__["a" /* Author */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__classes_author__["a" /* Author */]) === "function" && _a || Object)
-], AuthorDetailComponent.prototype, "author", void 0);
-AuthorDetailComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'author-detail',
-        template: __webpack_require__("../../../../../src/app/templates/author.detail.component.html")
-    }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__services_author_service__["a" /* AuthorService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_author_service__["a" /* AuthorService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common__["f" /* Location */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common__["f" /* Location */]) === "function" && _d || Object])
-], AuthorDetailComponent);
-
-var _a, _b, _c, _d;
-//# sourceMappingURL=author-detail.component.js.map
 
 /***/ }),
 
@@ -417,10 +334,9 @@ var _a, _b, _c, _d;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_author_detail_component__ = __webpack_require__("../../../../../src/app/components/author-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_authors_component__ = __webpack_require__("../../../../../src/app/components/authors.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_blogs_component__ = __webpack_require__("../../../../../src/app/components/blogs.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_update_blog_component__ = __webpack_require__("../../../../../src/app/components/update.blog.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_authors_component__ = __webpack_require__("../../../../../src/app/components/authors.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_blogs_component__ = __webpack_require__("../../../../../src/app/components/blogs.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_update_blog_component__ = __webpack_require__("../../../../../src/app/components/update.blog.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -432,13 +348,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
 var routes = [
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-    { path: 'blogs', component: __WEBPACK_IMPORTED_MODULE_4__components_blogs_component__["a" /* BlogsComponent */] },
-    { path: 'blogs/:id', component: __WEBPACK_IMPORTED_MODULE_5__components_update_blog_component__["a" /* UpdateBlogComponent */] },
-    { path: 'author-detail/:id', component: __WEBPACK_IMPORTED_MODULE_2__components_author_detail_component__["a" /* AuthorDetailComponent */] },
-    { path: 'authors', component: __WEBPACK_IMPORTED_MODULE_3__components_authors_component__["a" /* AuthorsComponent */] }
+    { path: '', redirectTo: '/authors', pathMatch: 'full' },
+    { path: 'blogs', component: __WEBPACK_IMPORTED_MODULE_3__components_blogs_component__["a" /* BlogsComponent */] },
+    { path: 'blogs/:id', component: __WEBPACK_IMPORTED_MODULE_4__components_update_blog_component__["a" /* UpdateBlogComponent */] },
+    { path: 'authors', component: __WEBPACK_IMPORTED_MODULE_2__components_authors_component__["a" /* AuthorsComponent */] }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -491,7 +405,7 @@ var AuthorService = (function () {
     };
     AuthorService.prototype.getAuthor = function (id) {
         return this.getAuthors()
-            .then(function (authors) { return authors.find(function (author) { return author.authorId === id; }); });
+            .then(function (authors) { return authors.find(function (author) { return author.id === id; }); });
     };
     AuthorService.prototype.create = function (name) {
         var url = "" + this.baseUrl;
@@ -502,7 +416,7 @@ var AuthorService = (function () {
             .catch(this.handleError);
     };
     AuthorService.prototype.update = function (author) {
-        var url = this.baseUrl + "/save/" + author.authorId;
+        var url = this.baseUrl + "/save/" + author.id;
         return this.http
             .put(url, JSON.stringify(author), { headers: this.headers })
             .toPromise()
@@ -560,7 +474,7 @@ var BlogService = (function () {
     };
     BlogService.prototype.getBlog = function (id) {
         return this.getBlogs()
-            .then(function (blogs) { return blogs.find(function (blog) { return blog.blogId === id; }); });
+            .then(function (blogs) { return blogs.find(function (blog) { return blog.id === id; }); });
     };
     BlogService.prototype.create = function (blog) {
         var url = "" + this.baseUrl;
@@ -601,13 +515,6 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 
 /***/ }),
 
-/***/ "../../../../../src/app/templates/author.detail.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div *ngIf=\"author\">\n    <h2>{{author.nickName}} details!</h2>\n    <div><label>id: </label>{{author.authorId}}</div>\n    <label>name: </label>\n    <input [(ngModel)]=\"author.nickName\" placeholder=\"nickName\"/>\n    <br/><br/>\n    <button (click)=\"save()\">Save</button>\n    <br/><br/>\n    <button (click)=\"goBack()\">Back</button>\n</div>\n\n"
-
-/***/ }),
-
 /***/ "../../../../../src/app/templates/authors.component.html":
 /***/ (function(module, exports) {
 
@@ -618,14 +525,14 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /***/ "../../../../../src/app/templates/blogs.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Create new blog</h3>\n<div>\n    <table width=\"100%\">\n        <tr>\n            <td width=\"30%\"><label>Blog title:</label></td>\n            <td><input [(ngModel)]=\"blog.title\" /></td>\n        </tr>\n        <tr>\n            <td ><label>Blog author:</label> </td>\n            <td><select [(ngModel)]=\"blog.author\">\n                    <option *ngFor=\"let author of authors\" [ngValue]=\"author\">{{author.nickName}}</option>\n                </select>\n            </td>\n        </tr>\n        <tr>\n            <td ><label>Blog body:</label></td>\n            <td><textarea  [(ngModel)]=\"blog.body\"></textarea>\n            </td>\n        </tr>\n        <tr>\n            <td></td>\n            <td ><button (click)=\"add(blog);\">Add</button></td>\n        </tr>\n    </table>\n</div>\n<hr/>\n<h3>Blogs Listing</h3>\n<div class=\"grid grid-pad\">\n    <div *ngFor=\"let blog of blogs\">\n        <h4>{{blog.title}}&nbsp;(<a [routerLink]=\"['/blogs', blog.blogId]\">Edit</a>)</h4>\n    </div>\n</div>"
+module.exports = "<h3>Create new blog</h3>\n<div>\n    <table width=\"100%\">\n        <tr>\n            <td width=\"30%\"><label>Blog title:</label></td>\n            <td><input [(ngModel)]=\"blog.title\" /></td>\n        </tr>\n        <tr>\n            <td ><label>Blog author:</label> </td>\n            <td><select [(ngModel)]=\"blog.author\">\n                    <option *ngFor=\"let author of authors\" [ngValue]=\"author\">{{author.nickName}}</option>\n                </select>\n            </td>\n        </tr>\n        <tr>\n            <td ><label>Blog body:</label></td>\n            <td><textarea  [(ngModel)]=\"blog.body\"></textarea>\n            </td>\n        </tr>\n        <tr>\n            <td></td>\n            <td ><button (click)=\"add(blog);\">Add</button></td>\n        </tr>\n    </table>\n</div>\n<hr/>\n<h3>Blogs Listing</h3>\n<div class=\"grid grid-pad\">\n    <div *ngFor=\"let blog of blogs\">\n        <h4>{{blog.title}}&nbsp;(<a [routerLink]=\"['/blogs', blog.id]\">Edit</a>)</h4>\n    </div>\n</div>"
 
 /***/ }),
 
 /***/ "../../../../../src/app/templates/update.blog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Update blog with ID: {{blog.blogId}}</h3>\n<div>\n    <table width=\"100%\">\n        <tr>\n            <td width=\"30%\"><label>Blog title:</label></td>\n            <td><input [(ngModel)]=\"blog.title\" /></td>\n        </tr>\n        <tr>\n            <td ><label>Blog body:</label></td>\n            <td><textarea  [(ngModel)]=\"blog.body\"></textarea>\n            </td>\n        </tr>\n        <tr>\n            <td></td>\n            <td ><button (click)=\"save();\">Save</button></td>\n        </tr>\n    </table>\n</div>\n\n<br/><br/>\n<button (click)=\"goBack()\">Back</button>"
+module.exports = "<h3>Update blog with ID: {{blog.id}}</h3>\n<div>\n    <table width=\"100%\">\n        <tr>\n            <td width=\"30%\"><label>Blog title:</label></td>\n            <td><input [(ngModel)]=\"blog.title\" /></td>\n        </tr>\n        <tr>\n            <td ><label>Blog body:</label></td>\n            <td><textarea  [(ngModel)]=\"blog.body\"></textarea>\n            </td>\n        </tr>\n        <tr>\n            <td></td>\n            <td ><button (click)=\"save();\">Save</button></td>\n        </tr>\n    </table>\n</div>\n\n<br/><br/>\n<button (click)=\"goBack()\">Back</button>"
 
 /***/ }),
 

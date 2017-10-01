@@ -1,7 +1,7 @@
 import { Author } from './author';
 
 export class Blog {
-    blogId: number;
+    id: number;
     title: string;
     body: string;
     creationTime: string;
