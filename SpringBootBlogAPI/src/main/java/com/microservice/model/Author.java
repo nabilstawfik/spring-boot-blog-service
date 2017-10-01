@@ -35,7 +35,7 @@ public class Author implements Serializable {
     private long id;
     @Getter
     @Setter
-    @Column(name = "nick_name")
+    @Column(name = "nick_name", nullable = false)
     private String nickName;
     @Getter
     @Setter

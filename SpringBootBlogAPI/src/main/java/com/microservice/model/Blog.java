@@ -37,11 +37,11 @@ public class Blog implements Serializable {
     private long id;
     @Getter
     @Setter
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     private String title;
     @Getter
     @Setter
-    @Column(name = "body")
+    @Column(name = "body",nullable = false)
     private String body;
     @Getter
     @Setter

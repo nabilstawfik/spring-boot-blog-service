@@ -7,6 +7,7 @@ package com.microservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,11 +18,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BlogDto extends AbstractDto {
+
     private long blogId;
+    @NotNull
     private String title;
+    @NotNull
     private String body;
     private Date creationTime;
-    @JsonProperty("author")
+    @JsonProperty(value = "author", required = true)
     private AuthorDto authorDto;
 
     public BlogDto() {

@@ -7,7 +7,7 @@ package com.microservice.integration;
 
 import com.microservice.repository.AuthorRepository;
 import com.microservice.AbstractBaseTest;
-import com.microservice.dto.AuthorDto;
+import com.microservice.model.Author;
 import com.microservice.service.AuthorService;
 import java.util.List;
 import org.junit.Test;
@@ -27,33 +27,33 @@ public class AuthorServiceImplIntegrationTest extends AbstractBaseTest {
 
     @Test
     public void saveTest() {
-        AuthorDto actual = authorService.save(new AuthorDto("Nabil"));
+        Author actual = authorService.save(new Author("Nabil"));
         assertThat(actual).isNotNull();
-        assertThat(actual.getAuthorId()).isNotEqualTo(0);
+        assertThat(actual.getId()).isNotEqualTo(0);
     }
 
     @Test
     public void updateAuthorNickNameTest() {
-        AuthorDto actual = authorService.save(new AuthorDto("Nabil Tawfik"));
+        Author actual = authorService.save(new Author("Nabil Tawfik"));
         assertThat(actual).isNotNull();
-        assertThat(actual.getAuthorId()).isNotEqualTo(0);
+        assertThat(actual.getId()).isNotEqualTo(0);
 
         actual.setNickName("Nabil Saad Tawfik");
-        AuthorDto actualUpdated = authorService.save(actual);
+        Author actualUpdated = authorService.save(actual);
 
         assertThat(actualUpdated).isNotNull();
         assertThat(actualUpdated.getNickName()).isEqualTo("Nabil Saad Tawfik");
-        assertThat(actualUpdated.getAuthorId()).isEqualTo(actual.getAuthorId());
+        assertThat(actualUpdated.getId()).isEqualTo(actual.getId());
     }
 
     @Test
     public void findAllTest() {
         authorRepository.deleteAll();
         
-        authorService.save(new AuthorDto("Tom"));
-        authorService.save(new AuthorDto("Andre"));
-        authorService.save(new AuthorDto("Nabil"));
-        List<AuthorDto> actuals = authorService.findAll();
+        authorService.save(new Author("Tom"));
+        authorService.save(new Author("Andre"));
+        authorService.save(new Author("Nabil"));
+        List<Author> actuals = authorService.findAll();
         
         assertThat(actuals).isNotNull();
         assertThat(actuals.get(0).getNickName()).isEqualTo("Andre");

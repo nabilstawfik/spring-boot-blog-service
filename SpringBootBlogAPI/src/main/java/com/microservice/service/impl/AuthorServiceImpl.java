@@ -5,7 +5,6 @@
  */
 package com.microservice.service.impl;
 
-import com.microservice.dto.AuthorDto;
 import com.microservice.model.Author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,6 @@ import com.microservice.repository.AuthorRepository;
 import com.microservice.service.AuthorService;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 import org.springframework.data.domain.Sort;
 
@@ -28,29 +26,14 @@ public class AuthorServiceImpl implements AuthorService {
     private AuthorRepository authorRepository;
 
     @Override
-    public AuthorDto save(AuthorDto authorDto) {
-        Author author;
-        if (authorDto.getAuthorId() != 0) {
-            author = authorRepository.findOne(authorDto.getAuthorId());
-        } else {
-            author = mapAuthorDtoToAuthor(authorDto);
-        }
-        author = authorRepository.save(author);
-        authorDto.setAuthorId(author.getId());
-        return authorDto;
+    public Author save(Author author) {
+        return authorRepository.save(author);
+        
     }
 
     @Override
-    public List<AuthorDto> findAll() {
-        Stream<Author> authorStream = StreamSupport.stream(authorRepository.findAll(new Sort(Sort.Direction.ASC, "nickName")).spliterator(), false);
-        return authorStream.map(author -> mapAuthorToAuthorDto(author)).collect(Collectors.toList());
+    public List<Author> findAll() {
+        return StreamSupport.stream(authorRepository.findAll(new Sort(Sort.Direction.ASC, "nickName")).spliterator(), false).collect(Collectors.toList());
     }
 
-    private AuthorDto mapAuthorToAuthorDto(Author author) {
-        return new AuthorDto(author.getId(), author.getNickName());
-    }
-
-    private Author mapAuthorDtoToAuthor(AuthorDto authorDto) {
-        return new Author(authorDto.getNickName());
-    }
 }

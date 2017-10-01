@@ -5,7 +5,7 @@
  */
 package com.microservice.service;
 
-import com.microservice.dto.AuthorDto;
+import com.microservice.model.Author;
 import java.util.List;
 
 /**
@@ -17,11 +17,11 @@ public interface AuthorService {
     /**
      
      * 
-     * @param authorDto
+     * @param author
      * @return 
      */
-    public AuthorDto save(AuthorDto authorDto);
+    public Author save(Author author);
 
-    List<AuthorDto> findAll();
+    List<Author> findAll();
     
 }

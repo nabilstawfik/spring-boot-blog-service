@@ -13,8 +13,11 @@ import com.microservice.AbstractRestBaseTest;
 import com.microservice.dto.AuthorDto;
 import com.microservice.dto.BlogDto;
 import com.microservice.exception.AuthorNotFoundException;
+import com.microservice.model.Author;
 import com.microservice.service.AuthorService;
 import com.microservice.service.BlogService;
+import com.microservice.transformer.AuthorTransformer;
+import com.microservice.transformer.BlogTransformer;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -29,7 +32,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class BlogResourceIntegrationTest extends AbstractRestBaseTest {
 
@@ -41,10 +43,14 @@ public class BlogResourceIntegrationTest extends AbstractRestBaseTest {
     BlogService blogService;
     @Autowired
     AuthorService authorService;
+    @Autowired
+    BlogTransformer blogTransformer;
+    @Autowired
+    AuthorTransformer authorTransformer;
 
     @Before
     public void setup() {
-        authorDto = authorService.save(new AuthorDto("Author Name"));
+        authorDto = authorTransformer.toDto(authorService.save(new Author("Author Name")));
     }
 
     @Test
@@ -60,7 +66,7 @@ public class BlogResourceIntegrationTest extends AbstractRestBaseTest {
     @Test
     public void updateTitleTest() throws AuthorNotFoundException {
         BlogDto blogDto = new BlogDto("Title", "Body", Date.valueOf(LocalDate.now()), authorDto);
-        blogDto = blogService.save(blogDto);
+        blogDto = blogTransformer.toDto(blogService.save(blogTransformer.toModel(blogDto)));
 
         blogDto.setTitle("Updated Title");
         HttpEntity httpEntity = new HttpEntity(blogDto, headers);
@@ -74,7 +80,7 @@ public class BlogResourceIntegrationTest extends AbstractRestBaseTest {
     @Test
     public void updateBodyTest() throws AuthorNotFoundException {
         BlogDto blogDto = new BlogDto("Title", "Body", Date.valueOf(LocalDate.now()), authorDto);
-        blogDto = blogService.save(blogDto);
+        blogDto = blogTransformer.toDto(blogService.save(blogTransformer.toModel(blogDto)));
 
         blogDto.setBody("Updated Body");
         HttpEntity httpEntity = new HttpEntity(blogDto, headers);
@@ -88,7 +94,7 @@ public class BlogResourceIntegrationTest extends AbstractRestBaseTest {
     @Test
     public void updateTitleAndBodyTest() throws AuthorNotFoundException {
         BlogDto blogDto = new BlogDto("Title", "Body", Date.valueOf(LocalDate.now()), authorDto);
-        blogDto = blogService.save(blogDto);
+        blogDto = blogTransformer.toDto(blogService.save(blogTransformer.toModel(blogDto)));
 
         blogDto.setTitle("Updated Title");
         blogDto.setBody("Updated Body");

@@ -5,11 +5,11 @@
  */
 package com.microservice.integration;
 
-import com.microservice.dto.AuthorDto;
-import com.microservice.dto.BlogDto;
 import com.microservice.exception.AuthorNotFoundException;
 import com.microservice.repository.BlogRepository;
 import com.microservice.AbstractBaseTest;
+import com.microservice.model.Author;
+import com.microservice.model.Blog;
 import com.microservice.service.AuthorService;
 import com.microservice.service.BlogService;
 import java.sql.Date;
@@ -34,79 +34,79 @@ public class BlogServiceImplIntegrationTest extends AbstractBaseTest {
 
     @Test
     public void saveTest() throws AuthorNotFoundException {
-        AuthorDto authorDto = authorService.save(new AuthorDto("Nabil"));
-        BlogDto blogDto = new BlogDto("Title1", "Body1", Date.valueOf(LocalDate.now()), authorDto);
-        blogDto = blogService.save(blogDto);
+        Author author = authorService.save(new Author("Nabil"));
+        Blog blog = new Blog("Title1", "Body1", Date.valueOf(LocalDate.now()), author);
+        blog = blogService.save(blog);
 
-        assertThat(blogDto).isNotNull();
-        assertThat(blogDto.getBlogId()).isNotEqualTo(0);
+        assertThat(blog).isNotNull();
+        assertThat(blog.getId()).isNotEqualTo(0);
     }
 
     @Test
     public void updateBlogTitleTest() throws AuthorNotFoundException {
-        AuthorDto authorDto = authorService.save(new AuthorDto("Nabil"));
-        BlogDto actual = blogService.save(new BlogDto("Title1", "Body1", Date.valueOf(LocalDate.now()), authorDto));
+        Author author = authorService.save(new Author("Nabil"));
+        Blog actual = blogService.save(new Blog("Title1", "Body1", Date.valueOf(LocalDate.now()), author));
 
         assertThat(actual).isNotNull();
-        assertThat(actual.getBlogId()).isNotEqualTo(0);
+        assertThat(actual.getId()).isNotEqualTo(0);
 
         actual.setTitle("Updated Title");
-        BlogDto actualUpdated = blogService.save(actual);
+        Blog actualUpdated = blogService.save(actual);
         
         assertThat(actualUpdated).isNotNull();
         assertThat(actualUpdated.getTitle()).isEqualTo("Updated Title");
-        assertThat(actualUpdated.getBlogId()).isEqualTo(actual.getBlogId());
+        assertThat(actualUpdated.getId()).isEqualTo(actual.getId());
 
     }
     
     @Test
     public void updateBlogBodyTest() throws AuthorNotFoundException {
-        AuthorDto authorDto = authorService.save(new AuthorDto("Nabil"));
-        BlogDto actual = blogService.save(new BlogDto("Title1", "Body1", Date.valueOf(LocalDate.now()), authorDto));
+        Author author = authorService.save(new Author("Nabil"));
+        Blog actual = blogService.save(new Blog("Title1", "Body1", Date.valueOf(LocalDate.now()), author));
 
         assertThat(actual).isNotNull();
-        assertThat(actual.getBlogId()).isNotEqualTo(0);
+        assertThat(actual.getId()).isNotEqualTo(0);
 
         actual.setBody("Updated Body");
-        BlogDto actualUpdated = blogService.save(actual);
+        Blog actualUpdated = blogService.save(actual);
         
         assertThat(actualUpdated).isNotNull();
         assertThat(actualUpdated.getBody()).isEqualTo("Updated Body");
-        assertThat(actualUpdated.getBlogId()).isEqualTo(actual.getBlogId());
+        assertThat(actualUpdated.getId()).isEqualTo(actual.getId());
 
     }
 
     @Test
     public void updateBlogTitleAndBodyTest() throws AuthorNotFoundException {
-        AuthorDto authorDto = authorService.save(new AuthorDto("Nabil"));
-        BlogDto actual = blogService.save(new BlogDto("Title1", "Body1", Date.valueOf(LocalDate.now()), authorDto));
+        Author author = authorService.save(new Author("Nabil"));
+        Blog actual = blogService.save(new Blog("Title1", "Body1", Date.valueOf(LocalDate.now()), author));
 
         assertThat(actual).isNotNull();
-        assertThat(actual.getBlogId()).isNotEqualTo(0);
+        assertThat(actual.getId()).isNotEqualTo(0);
 
         actual.setTitle("Updated Title");
         actual.setBody("Updated Body");
-        BlogDto actualUpdated = blogService.save(actual);
+        Blog actualUpdated = blogService.save(actual);
         
         assertThat(actualUpdated).isNotNull();
         assertThat(actualUpdated.getTitle()).isEqualTo("Updated Title");
         assertThat(actualUpdated.getBody()).isEqualTo("Updated Body");
-        assertThat(actualUpdated.getBlogId()).isEqualTo(actual.getBlogId());
+        assertThat(actualUpdated.getId()).isEqualTo(actual.getId());
 
     }
     
     @Test
     public void findAllByOrderByCreationTimeDescTest() throws AuthorNotFoundException {
         blogRepository.deleteAll();
-        AuthorDto authorDto = authorService.save(new AuthorDto("Nabil"));
-        BlogDto blogDto1 = new BlogDto("Title1", "Body1", Date.valueOf(LocalDate.now()), authorDto);
-        BlogDto blogDto2 = new BlogDto("Title2", "Body2", Date.valueOf(LocalDate.now().plusDays(1)), authorDto);
-        blogService.save(blogDto1);
-        blogService.save(blogDto2);
+        Author author = authorService.save(new Author("Nabil"));
+        Blog blog1 = new Blog("Title1", "Body1", Date.valueOf(LocalDate.now()), author);
+        Blog blog2 = new Blog("Title2", "Body2", Date.valueOf(LocalDate.now().plusDays(1)), author);
+        blogService.save(blog1);
+        blogService.save(blog2);
 
-        List<BlogDto> actualBlogDtoList = blogService.findAll(0, 20);
-        assertThat(actualBlogDtoList).isNotNull();
-        assertThat(actualBlogDtoList.get(0).getTitle()).isEqualTo("Title2");
-        assertThat(actualBlogDtoList.get(1).getTitle()).isEqualTo("Title1");
+        List<Blog> actualBlogList = blogService.findAll(0, 20);
+        assertThat(actualBlogList).isNotNull();
+        assertThat(actualBlogList.get(0).getTitle()).isEqualTo("Title2");
+        assertThat(actualBlogList.get(1).getTitle()).isEqualTo("Title1");
     }
 }

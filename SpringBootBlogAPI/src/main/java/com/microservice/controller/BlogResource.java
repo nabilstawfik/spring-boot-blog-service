@@ -7,14 +7,17 @@ package com.microservice.controller;
 
 import com.microservice.dto.BlogDto;
 import com.microservice.exception.AuthorNotFoundException;
+import com.microservice.model.Blog;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.microservice.service.BlogService;
+import com.microservice.transformer.BlogTransformer;
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,11 +42,13 @@ public class BlogResource {
 
     @Autowired
     BlogService blogService;
+    @Autowired
+    BlogTransformer blogTransformer;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<BlogDto> save(@RequestBody BlogDto blogDto) throws AuthorNotFoundException {
         blogDto.setCreationTime(Calendar.getInstance().getTime());
-        blogDto = blogService.save(blogDto);
+        blogDto = blogTransformer.toDto(blogService.save(blogTransformer.toModel(blogDto)));
         blogDto.add(linkTo(methodOn(BlogResource.class).update(blogDto)).withSelfRel());
         blogDto.add(linkTo(methodOn(BlogResource.class).findAll(0, 20)).withSelfRel());
         return new ResponseEntity<>(blogDto, HttpStatus.OK);
@@ -51,7 +56,7 @@ public class BlogResource {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<BlogDto> update(@RequestBody BlogDto blogDto) throws AuthorNotFoundException {
-        blogDto = blogService.save(blogDto);
+        blogDto = blogTransformer.toDto(blogService.save(blogTransformer.toModel(blogDto)));
         blogDto.add(linkTo(methodOn(BlogResource.class).findAll(0, 20)).withSelfRel());
         return new ResponseEntity<>(blogDto, HttpStatus.OK);
     }
@@ -61,8 +66,9 @@ public class BlogResource {
             @RequestParam(name = "page", defaultValue = "0") Integer page,
             @RequestParam(name = "pageSize", defaultValue = "20") Integer pageSize) {
         try {
-            List<BlogDto> blogsList = blogService.findAll(page, pageSize);
-            return new ResponseEntity<>(blogsList, HttpStatus.OK);
+            List<Blog> blogsList = blogService.findAll(page, pageSize);
+            List<BlogDto> blogsDtoList = blogsList.stream().map(blog -> blogTransformer.toDto(blog)).collect(Collectors.toList());;
+            return new ResponseEntity<>(blogsDtoList, HttpStatus.OK);
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

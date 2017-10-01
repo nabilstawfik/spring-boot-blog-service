@@ -5,8 +5,8 @@
  */
 package com.microservice.service;
 
-import com.microservice.dto.BlogDto;
 import com.microservice.exception.AuthorNotFoundException;
+import com.microservice.model.Blog;
 import java.util.List;
 
 /**
@@ -15,8 +15,8 @@ import java.util.List;
  */
 public interface BlogService {
 
-    List<BlogDto> findAll(int page, int pageSize);
+    List<Blog> findAll(int page, int pageSize);
 
-    BlogDto save(BlogDto blogDto) throws AuthorNotFoundException;
+    Blog save(Blog blog) throws AuthorNotFoundException;
 
 }

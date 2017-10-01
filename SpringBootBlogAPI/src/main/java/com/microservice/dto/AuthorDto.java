@@ -5,6 +5,7 @@
  */
 package com.microservice.dto;
 
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +16,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AuthorDto extends AbstractDto {
+
     private long authorId;
+    @NotNull
     private String nickName;
 
     public AuthorDto() {
