@@ -10,8 +10,8 @@
 
 ## How to run
 <ul>
-    <li>Open the project with Netbeans and right click run, or browse to source code directory and execute ($mvn spring-boot:run)</li>
-    <li>Open the browser and point to (http://localhost:8086)</li>
+    <li>Open the project with Netbeans and right click run, or browse to source code directory and execute `$mvn spring-boot:run`</li>
+    <li>Open the browser and point to 'http://localhost:8086'</li>
 </ul>
 
 ## Security
