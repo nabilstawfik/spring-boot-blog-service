@@ -38,7 +38,28 @@ public class AuthorResource {
     AuthorService authorService;
     @Autowired
     AuthorTransformer authorTransformer;
-
+     /**
+     * Add new author.
+     * <p>
+     * <b>Service URL:</b> /api/authors</p>
+     * <p>
+     * <b>Sample call:</b></p>
+     * <p>
+     * var authorDto = {id: [long], nickName: [string]};
+     * <br/>
+     * $.ajax({ type: "POST", url: "/api/authors", contentType:"application/json", 
+     * data: JSON.stringify(authorDto),
+     * beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Basic XXXXXXXXXX');},
+     * success: function(data){}, error: function (XMLHttpRequest, textStatus, errorThrown) {}
+     * });</p>
+     * <p>
+     * <b>Success Response:</b> Code = 200</p>
+     * <p>
+     * <b>Sample Response:</b> { id : [long], nickName: [string], links:{}}</p>
+     *
+     * @param authorDto Json object.
+     * @return authorDto Json object.
+     */
     @PostMapping(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<AuthorDto> save(@RequestBody AuthorDto authorDto) {
         try {
@@ -50,7 +71,24 @@ public class AuthorResource {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
-
+     /**
+     * List authors ordered by nickName ASC.
+     * <p>
+     * <b>Service URL:</b> /api/authors</p>
+     * <p>
+     * <b>Sample call:</b></p>
+     * <p>
+     * $.ajax({ type: "GET", url: "/api/authors", contentType:
+     * beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Basic XXXXXXXXXX');},
+     * success: function(data){}, error: function (XMLHttpRequest, textStatus, errorThrown) {}
+     * });</p>
+     * <p>
+     * <b>Success Response:</b> Code = 200</p>
+     * <p>
+     * <b>Sample Response:</b> [{ id : [long], nickName: [string], links:{}},.....]</p>
+     *
+     * @return List of authorDto Json object.
+     */
     @GetMapping(produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<List<AuthorDto>> findAll() {
         try {

@@ -44,7 +44,29 @@ public class BlogResource {
     BlogService blogService;
     @Autowired
     BlogTransformer blogTransformer;
-
+     /**
+     * Add new blog.
+     * <p>
+     * <b>Service URL:</b> /api/blogs</p>
+     * <p>
+     * <b>Sample call:</b></p>
+     * <p>
+     * var blogDto = {id: [long], title: [string], body: [string], creationTime: [datetime], author: {id: [long], nickName: [string]}};
+     * <br/>
+     * $.ajax({ type: "POST", url: "/api/blogs", contentType:"application/json", 
+     * data: JSON.stringify(blogDto),
+     * beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Basic XXXXXXXXXX');},
+     * success: function(data){}, error: function (XMLHttpRequest, textStatus, errorThrown) {}
+     * });</p>
+     * <p>
+     * <b>Success Response:</b> Code = 200</p>
+     * <p>
+     * <b>Sample Response:</b> {id: [long], title: [string], body: [string], creationTime: [datetime], author: {id: [long], nickName: [string]}, links:{}}</p>
+     *
+     * @param blogDto Json object.
+     * @return blogDto Json object.
+     * @throws com.microservice.exception.AuthorNotFoundException
+     */
     @PostMapping(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<BlogDto> save(@RequestBody BlogDto blogDto) throws AuthorNotFoundException {
         blogDto.setCreationTime(Calendar.getInstance().getTime());
@@ -53,14 +75,55 @@ public class BlogResource {
         blogDto.add(linkTo(methodOn(BlogResource.class).findAll(0, 20)).withSelfRel());
         return new ResponseEntity<>(blogDto, HttpStatus.OK);
     }
-
+     /**
+     * Update an existing blog.
+     * <p>
+     * <b>Service URL:</b> /api/blogs</p>
+     * <p>
+     * <b>Sample call:</b></p>
+     * <p>
+     * var blogDto = {id: [long], title: [string], body: [string], creationTime: [datetime], author: {id: [long], nickName: [string]}};
+     * <br/>
+     * $.ajax({ type: "PUT", url: "/api/blogs", contentType:"application/json", 
+     * data: JSON.stringify(blogDto),
+     * beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Basic XXXXXXXXXX');},
+     * success: function(data){}, error: function (XMLHttpRequest, textStatus, errorThrown) {}
+     * });</p>
+     * <p>
+     * <b>Success Response:</b> Code = 200</p>
+     * <p>
+     * <b>Sample Response:</b> {id: [long], title: [string], body: [string], creationTime: [datetime], author: {id: [long], nickName: [string]}, links:{}}</p>
+     *
+     * @param blogDto Json object.
+     * @return blogDto Json object.
+     * @throws com.microservice.exception.AuthorNotFoundException
+     */
     @PutMapping(consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<BlogDto> update(@RequestBody BlogDto blogDto) throws AuthorNotFoundException {
         blogDto = blogTransformer.toDto(blogService.save(blogTransformer.toModel(blogDto)));
         blogDto.add(linkTo(methodOn(BlogResource.class).findAll(0, 20)).withSelfRel());
         return new ResponseEntity<>(blogDto, HttpStatus.OK);
     }
-
+     /**
+     * List blogs ordered by creationtime DESC.
+     * <p>
+     * <b>Service URL:</b> /api/blogs</p>
+     * <p>
+     * <b>Sample call:</b></p>
+     * <p>
+     * $.ajax({ type: "GET", url: "/api/blogs?page=0&pageSize=20",
+     * beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Basic XXXXXXXXXX');},
+     * success: function(data){}, error: function (XMLHttpRequest, textStatus, errorThrown) {}
+     * });</p>
+     * <p>
+     * <b>Success Response:</b> Code = 200</p>
+     * <p>
+     * <b>Sample Response:</b> [{id: [long], title: [string], body: [string], creationTime: [datetime], author: {id: [long], nickName: [string]}}, links:{},....]</p>
+     *
+     * @param page
+     * @param pageSize     
+     * @return List of blogDto Json object.
+     */
     @GetMapping(produces = MediaType.APPLICATION_JSON)
     public ResponseEntity<List<BlogDto>> findAll(
             @RequestParam(name = "page", defaultValue = "0") Integer page,
