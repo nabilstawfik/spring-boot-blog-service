@@ -5,7 +5,6 @@ import { HttpModule }    from '@angular/http';
 
 
 import { AppComponent } from './app.component';
-import { AuthorDetailComponent } from './components/author-detail.component';
 import { AuthorsComponent } from './components/authors.component';
 import { BlogsComponent } from './components/blogs.component';
 import { UpdateBlogComponent } from './components/update.blog.component';
@@ -17,7 +16,7 @@ import { BlogService } from './services/blog.service';
 
 @NgModule({
   declarations: [
-    AppComponent,AuthorDetailComponent,AuthorsComponent,BlogsComponent,UpdateBlogComponent
+    AppComponent,AuthorsComponent,BlogsComponent,UpdateBlogComponent
   ],
   imports: [
     BrowserModule,
