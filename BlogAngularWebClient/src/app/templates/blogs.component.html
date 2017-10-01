@@ -1,0 +1,32 @@
+<h3>Create new blog</h3>
+<div>
+    <table width="100%">
+        <tr>
+            <td width="30%"><label>Blog title:</label></td>
+            <td><input [(ngModel)]="blog.title" /></td>
+        </tr>
+        <tr>
+            <td ><label>Blog author:</label> </td>
+            <td><select [(ngModel)]="blog.author">
+                    <option *ngFor="let author of authors" [ngValue]="author">{{author.nickName}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td ><label>Blog body:</label></td>
+            <td><textarea  [(ngModel)]="blog.body"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td ><button (click)="add(blog);">Add</button></td>
+        </tr>
+    </table>
+</div>
+<hr/>
+<h3>Blogs Listing</h3>
+<div class="grid grid-pad">
+    <div *ngFor="let blog of blogs">
+        <h4>{{blog.title}}&nbsp;(<a [routerLink]="['/blogs', blog.blogId]">Edit</a>)</h4>
+    </div>
+</div>

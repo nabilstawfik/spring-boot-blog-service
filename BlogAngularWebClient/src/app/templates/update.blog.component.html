@@ -1,0 +1,21 @@
+<h3>Update blog with ID: {{blog.blogId}}</h3>
+<div>
+    <table width="100%">
+        <tr>
+            <td width="30%"><label>Blog title:</label></td>
+            <td><input [(ngModel)]="blog.title" /></td>
+        </tr>
+        <tr>
+            <td ><label>Blog body:</label></td>
+            <td><textarea  [(ngModel)]="blog.body"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td ><button (click)="save();">Save</button></td>
+        </tr>
+    </table>
+</div>
+
+<br/><br/>
+<button (click)="goBack()">Back</button>

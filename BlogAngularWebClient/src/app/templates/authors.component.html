@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h3>Create new author</h3>
+<div>
+    <table width="100%">
+        <tr>
+            <td width="30%"><label>Author nick name</label></td>
+            <td><input #authorName /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td ><button (click)="add(authorName.value); authorName.value=''">Add</button></td>
+        </tr>
+    </table>
+</div>
+<hr/>
+<div>
+    <h3>Authors Listing</h3>
+
+    <div *ngFor="let author of authors">
+        <h4>{{author.nickName}}</h4>
+    </div>
+
+</div>
