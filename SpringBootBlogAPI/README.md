@@ -10,8 +10,8 @@
 
 ## How to run
 <ul>
-    <li>Open the project with Netbeans and right click run, or browse to source code directory and execute `$mvn spring-boot:run`</li>
-    <li>Open the browser and point to 'http://localhost:8086'</li>
+    <li>Open the project with Netbeans and right click run, or browse to source code directory and execute <code>$mvn spring-boot:run</code></li>
+    <li>Open the browser and point to <code>http://localhost:8086</code></li>
 </ul>
 
 ## Security
@@ -26,7 +26,7 @@
 
 ## Enhancements
 <ul>
-    <li>Implement basic login feature with (UserDetails) instead of hard coded user.</li>
+    <li>Implement basic login feature with <code>UserDetails</code> instead of hard coded user.</li>
     <li>Change the authentication to use OATH2 instead of Basic authentication.</li>
     <li>Use spring ACL to secure the domain objects as now anyone can add/update.</li>
     <li>Document the code in a better way.</li>
