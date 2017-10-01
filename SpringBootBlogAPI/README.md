@@ -4,7 +4,7 @@
 <ul>
     <li>Netbeans 8.1</li>
     <li>JDK 8</li>
-    <li>Spring (boot, data jpa, mvc, security, hateoas)</li>
+    <li>Spring (boot, data jpa, mvc, security, hateoas, test)</li>
     <li>Lombok</li>
 </ul>
 
@@ -22,6 +22,11 @@
 ## Assumptions
 <ul>
     <li>You can't create blog without predefined author, so you have to create the author and select it from dropdown on blog form, We can enhance this point, as from my point of view in real live the author will be a system user with a lot of data and doesn't make sense to merge the author data with blog data in one form.</li>
+</ul>
+
+## Testing
+<ul>
+    <li>Create integration tests for the services and Rest resources.</li>
 </ul>
 
 ## Enhancements
