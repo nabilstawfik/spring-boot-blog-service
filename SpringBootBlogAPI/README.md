@@ -19,6 +19,11 @@
     <li>Used spring security to secure the resources with in memory user database, just for simplicity.</li>
 </ul>
 
+## System Architecture
+<ul>
+    <li>Hight level system architecture [link](https://docs.google.com/drawings/d/1cE9xnAWEGTdB5xW1jE4CvCrh73DICh9mOippjBWfusc/edit?usp=sharing).</li>
+</ul>
+
 ## Testing
 <ul>
     <li>Create integration tests for the services and Rest resources.</li>
