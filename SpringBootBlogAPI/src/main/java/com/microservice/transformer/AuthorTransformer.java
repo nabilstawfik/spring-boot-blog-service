@@ -21,10 +21,20 @@ public class AuthorTransformer {
     @Autowired
     private AuthorRepository authorRepository;
 
+    /**
+     * Transform Author to AuthorDto
+     * @param author
+     * @return authorDto
+     */
     public AuthorDto toDto(Author author) {
         return new AuthorDto(author.getId(), author.getNickName());
     }
 
+    /**
+     * Transform the AuthorDto to Author.
+     * @param authorDto
+     * @return author
+     */
     public Author toModel(AuthorDto authorDto) {
         Author author;
         if (authorDto.getAuthorId() != 0) {

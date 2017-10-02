@@ -15,8 +15,22 @@ import java.util.List;
  */
 public interface BlogService {
 
+    /**
+     * Find all blogs order by creation time DESC
+     * 
+     * @param page
+     * @param pageSize
+     * @return List of Blog
+     */
     List<Blog> findAll(int page, int pageSize);
 
+    /**
+     * Save blog object to database.
+     * 
+     * @param blog
+     * @return blog
+     * @throws AuthorNotFoundException
+     */
     Blog save(Blog blog) throws AuthorNotFoundException;
 
 }

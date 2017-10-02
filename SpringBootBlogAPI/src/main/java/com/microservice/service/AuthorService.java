@@ -15,13 +15,17 @@ import java.util.List;
 public interface AuthorService {
 
     /**
-     
+     * Save Author object to database.
      * 
      * @param author
-     * @return 
+     * @return author 
      */
     public Author save(Author author);
 
+    /**
+     * Find all authors order by nickName ASC
+     * @return List of Author
+     */
     List<Author> findAll();
     
 }
