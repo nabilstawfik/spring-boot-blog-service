@@ -4,7 +4,7 @@
 <ul>
     <li>Netbeans 8.1</li>
     <li>JDK 8</li>
-    <li>Spring (boot, data jpa, mvc, security, hateoas, test)</li>
+    <li>Spring (boot, data jpa, mvc, security, hateoas, profiles, test)</li>
     <li>Lombok</li>
 </ul>
 
