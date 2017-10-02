@@ -23,6 +23,7 @@ public class AuthorTransformer {
 
     /**
      * Transform Author to AuthorDto
+     * 
      * @param author
      * @return authorDto
      */
@@ -32,6 +33,7 @@ public class AuthorTransformer {
 
     /**
      * Transform the AuthorDto to Author.
+     * 
      * @param authorDto
      * @return author
      */

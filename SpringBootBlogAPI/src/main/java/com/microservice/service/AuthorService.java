@@ -24,6 +24,7 @@ public interface AuthorService {
 
     /**
      * Find all authors order by nickName ASC
+     * 
      * @return List of Author
      */
     List<Author> findAll();

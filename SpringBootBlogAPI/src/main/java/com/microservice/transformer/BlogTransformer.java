@@ -28,6 +28,12 @@ public class BlogTransformer {
     @Autowired
     private AuthorTransformer authorTransformer;
 
+    /**
+     * Transform Blog to BlogDto
+     * 
+     * @param blog
+     * @return BlogDto
+     */
     public BlogDto toDto(Blog blog) {
         BlogDto blogDto = new BlogDto();
         blogDto.setBlogId(blog.getId());
@@ -38,6 +44,13 @@ public class BlogTransformer {
         return blogDto;
     }
 
+    /**
+     * Transform BlogDto to Blog
+     * 
+     * @param blogDto
+     * @return Blog
+     * @throws AuthorNotFoundException
+     */
     public Blog toModel(BlogDto blogDto) throws AuthorNotFoundException {
         Author author;
         Blog blog;
