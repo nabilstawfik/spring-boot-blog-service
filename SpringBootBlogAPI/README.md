@@ -34,5 +34,6 @@
     <li>Implement basic login feature with <code>UserDetails</code> instead of hard coded user.</li>
     <li>Change the authentication to use OATH2 instead of Basic authentication.</li>
     <li>Use spring ACL to secure the domain objects as now anyone can add/update.</li>
+    <li>Handling exceptions and return descriptive status code on error.</li>
     <li>Document the code in a better way.</li>
 </ul>
