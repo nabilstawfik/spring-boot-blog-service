@@ -243,7 +243,7 @@ var BlogsComponent = (function () {
         var _this = this;
         this.blogService.create(blog)
             .then(function (blog) {
-            _this.blogs.splice(0, 0, blog);
+            _this.blogs.unshift(blog);
         });
     };
     return BlogsComponent;
