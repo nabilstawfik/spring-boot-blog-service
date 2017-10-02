@@ -21,7 +21,7 @@
 
 ## System Architecture
 <ul>
-    <li>Hight level system architecture <a href="https://docs.google.com/drawings/d/1cE9xnAWEGTdB5xW1jE4CvCrh73DICh9mOippjBWfusc/edit?usp=sharing" target="_blank">link</a>.</li>
+    <li>Hight level system architecture <a href="https://docs.google.com/drawings/d/1cE9xnAWEGTdB5xW1jE4CvCrh73DICh9mOippjBWfusc/edit?usp=sharing" target="_blank">diagram</a>.</li>
 </ul>
 
 ## Testing
