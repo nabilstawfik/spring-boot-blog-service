@@ -37,7 +37,7 @@ export class BlogsComponent implements OnInit {
     add(blog: Blog): void {
       this.blogService.create(blog)
         .then(blog => {
-          this.blogs.push(blog);
+          this.blogs.splice(0, 0, blog);
         });
     }
 }
